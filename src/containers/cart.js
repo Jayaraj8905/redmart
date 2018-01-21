@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchCart } from "../actions";
+import { fetchCart, removeCart } from "../actions";
 
 import ProductItem from "./../components/product_item";
 
@@ -11,18 +11,20 @@ class Cart extends Component {
     this.props.history.push(`/detail/${selectedProduct.id}`);
   }
 
-  addToCart(product) {
-  	this.props.addCart();
+  removeFromCart(product) {
+    this.props.removeCart(product); 
   }
 
   render() {
-    const { cart,  } = this.props;
+    const { cart } = this.props;
     const productItems = cart.map((product) => {
+      const isCart = cart.indexOf(product.id) != -1;
       return (
           <div className="flex-25 layout-row" key={product.id}>
             <ProductItem  
             			product={product} 
             			onSelect={product => this.productDetail(product)}
+                  removeFromCart={product => this.removeFromCart(product)}
             			isCart={true}
             			/>
           </div>
@@ -47,5 +49,5 @@ function mapStateToProps({ cart, products }) {
   return { cart: cartProducts };
 }
 
-export default connect(mapStateToProps, { fetchCart })(Cart);
+export default connect(mapStateToProps, { fetchCart, removeCart })(Cart);
 

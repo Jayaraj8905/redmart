@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchProducts, addCart } from "../actions";
+import { fetchProducts, addCart, removeCart } from "../actions";
 
 import ProductItem from "./../components/product_item";
 import Filter from "./filters";
@@ -27,6 +27,10 @@ class Browse extends Component {
 
   addToCart(product) {
     this.props.addCart(product);
+  }
+
+  removeFromCart(product) {
+    this.props.removeCart(product); 
   }
 
   onFilter(filters) {
@@ -70,6 +74,7 @@ class Browse extends Component {
             <ProductItem product={product}
               onSelect={product => this.productDetail(product)}
               addToCart={product => this.addToCart(product)}
+              removeFromCart={product => this.removeFromCart(product)}
               isCart={isCart}
             />
           </div>
@@ -96,5 +101,5 @@ function mapStateToProps({ products, cart }) {
   return { products, cart };
 }
 
-export default connect(mapStateToProps, { fetchProducts, addCart })(Browse);
+export default connect(mapStateToProps, { fetchProducts, addCart, removeCart })(Browse);
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchProduct, addCart } from "../actions";
+import { fetchProduct, addCart, removeCart } from "../actions";
 
 class Detail extends Component {
 
@@ -12,10 +12,14 @@ class Detail extends Component {
     this.props.addCart(this.props.product);
   }
 
+  removeFromCart(product) {
+    this.props.removeCart(this.props.product); 
+  }
+
   renderAddToCart() {
     return !this.props.isCart ? (
         <a className="btn btn-primary" onClick={(event) => this.addToCart(event)}>Add To Cart</a>  
-      ) : '';
+      ) : <a className="btn btn-primary" onClick={(event) => this.removeFromCart(event)}>Remove From Cart</a>;
   }
 
   render() {
@@ -55,4 +59,4 @@ function mapStateToProps({ products, cart }, ownProps) {
   return { product, isCart };
 }
 
-export default connect(mapStateToProps, { fetchProduct, addCart })(Detail);
+export default connect(mapStateToProps, { fetchProduct, addCart, removeCart })(Detail);

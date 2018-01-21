@@ -8,10 +8,15 @@ class ProductItem extends Component {
 		this.props.addToCart(this.props.product);
 	}
 
+	removeFromCart(event) {
+		event.stopPropagation();
+		this.props.removeFromCart(this.props.product);
+	}
+
 	renderAddToCart() {
 		return !this.props.isCart ? (
 				<a className="btn btn-primary" onClick={(event) => this.addToCart(event)}>Add To Cart</a>	
-			) : '';
+			) : <a className="btn btn-primary" onClick={(event) => this.removeFromCart(event)}>Remove From Cart</a>;
 	}
 
   	render() {
