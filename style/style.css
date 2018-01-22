@@ -27,10 +27,12 @@ p, .text {
 h3 {
     margin: 8px 0px;
     font-weight: lighter;
+    font-size: 24px;
 }
 
 h4, h5 {
     margin: 8px 0px;
+    font-size: 22px;
 }
 
 h4 {
@@ -270,4 +272,33 @@ header .btn {
 .detail .btn {
     margin: 0px;
     display: inline-block;
+}
+
+
+/*Below line of code is just to make compatible mobile
+but i didn't really follow the responsive methodoly as there is 
+no requirement mentioned*/
+@media (max-width: 600px) {
+    .filter  {
+        max-width: 30%;
+    }
+
+    .page {
+        flex-direction: column;
+    }
+    .page >  div{
+        max-width: 100% !important;
+    }  
+} 
+@media (min-width: 600px) and (max-width: 959px) {
+    .filter  {
+        max-width: 30%;
+    }
+    
+    .page {
+        flex-direction: column;
+    }
+    .page >  div{
+        max-width: 100% !important;
+    }  
 }
