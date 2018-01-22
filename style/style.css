@@ -280,7 +280,7 @@ but i didn't really follow the responsive methodoly as there is
 no requirement mentioned*/
 @media (max-width: 600px) {
     .filter  {
-        max-width: 30%;
+        max-width: 30% !important;
     }
 
     .page {
@@ -292,7 +292,7 @@ no requirement mentioned*/
 } 
 @media (min-width: 600px) and (max-width: 959px) {
     .filter  {
-        max-width: 30%;
+        max-width: 30% !important;
     }
     
     .page {
