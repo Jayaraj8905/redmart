@@ -4,6 +4,7 @@ export const FETCH_FILTERS = "fetch_filters";
 export const FETCH_CART = "fetch_cart";
 export const ADD_CART = "add_cart";
 export const REMOVE_CART = "remove_cart";
+export const TOGGLE_FILTER = "toggle_filter";
 
 import DATA from "./../data.js";
 
@@ -51,4 +52,11 @@ export function removeCart(product) {
       type: REMOVE_CART,
       payload: product.id
     };
+}
+
+export function toggleFilter(state) {
+	return {
+		type: TOGGLE_FILTER,
+		payload: {state}
+	}
 }

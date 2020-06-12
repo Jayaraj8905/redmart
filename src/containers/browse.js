@@ -11,7 +11,8 @@ class Browse extends Component {
   constructor() {
     super();
     this.state = {
-      filters: {}
+      filters: {},
+      filterState: {}
     }
   }
 
@@ -40,7 +41,7 @@ class Browse extends Component {
   }
 
   isInFilter(product) {
-    const { filters } = this.state;
+    const { filters, filterState } = this.state;
     // if the brand filter is empty return true
     // else check the product brand is exists in the filter
     let inBrand = !filters['brand'] || filters['brand'].length === 0 || filters['brand'].indexOf(product.brand) != -1;
@@ -63,10 +64,12 @@ class Browse extends Component {
   }
 
   render() {
-    const { products,cart } = this.props;
+    const { products,cart, filterState } = this.props;
+    const active = filterState.state;
     // get the product items from the list
     const productItems = products.map((product, key) => {
       const isCart = cart.indexOf(product.id) != -1;
+      
       // also check it is in the filter
       if (this.isInFilter(product)) {
         return (
@@ -84,7 +87,7 @@ class Browse extends Component {
     
     return (  
       <div className="layout-row">
-        <div className="flex-20 filter layout-row">
+        <div className={`flex-20 filter layout-row ${active ? "" : "hide"}`}>
           <Filter onFilter={filters => this.onFilter(filters)}/>
         </div>
         <div className="page-wrapper flex">
@@ -97,8 +100,8 @@ class Browse extends Component {
   }
 }
 
-function mapStateToProps({ products, cart }) {
-  return { products, cart };
+function mapStateToProps({ products, cart, filterState }) {
+  return { products, cart, filterState };
 }
 
 export default connect(mapStateToProps, { fetchProducts, addCart, removeCart })(Browse);

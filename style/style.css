@@ -276,6 +276,134 @@ header .btn {
 }
 
 
+.filter{
+    transition: left 1s;
+}
+
+.menu {
+    display: none;
+    width: 120px;
+    padding-left: 20px;
+    height: 72px;
+    padding-top: 8px;
+    font-size: 14px;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -khtml-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    color: #44444d;
+}
+
+.menu.open {
+    margin-left: 216px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.c-hamburger {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    top: 8px;
+    margin: 0;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    font-size: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    border-radius: none;
+    border: none;
+    cursor: pointer;
+    background: 0 0;
+    color: #222;
+}
+
+.c-hamburger--htx span {
+    transition: background 0s .25s;
+}
+.c-hamburger span {
+    display: block;
+    position: absolute;
+    top: 17px;
+    left: 6px;
+    right: 6px;
+    height: 2px;
+    background: #FFF;
+}
+
+.c-hamburger--htx span::before {
+    transition-property: top,-webkit-transform;
+    transition-property: top,transform;
+}
+.c-hamburger--htx span::after, .c-hamburger--htx span::before {
+    transition-duration: .25s,.25s;
+    transition-delay: .25s,0s;
+}
+.c-hamburger span::before {
+    top: -6px;
+}
+.c-hamburger span::after, .c-hamburger span::before {
+    position: absolute;
+    display: block;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #FFF;
+    content: "";
+}
+
+.c-hamburger--htx span::after {
+    transition-property: bottom,-webkit-transform;
+    transition-property: bottom,transform;
+}
+
+.c-hamburger--htx span::after, .c-hamburger--htx span::before {
+    transition-duration: .25s,.25s;
+    transition-delay: .25s,0s;
+}
+.c-hamburger span::after {
+    bottom: -6px;
+}
+.c-hamburger span::after, .c-hamburger span::before {
+    position: absolute;
+    display: block;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #FFF;
+    content: "";
+}
+
+.c-hamburger--htx.is-active span {
+    background: 0 0;
+}
+
+.c-hamburger--htx.is-active span::after, .c-hamburger--htx.is-active span::before {
+    transition-delay: 0s,.25s;
+}
+
+.c-hamburger--htx.is-active span::before {
+    top: 0;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.c-hamburger--htx.is-active span::after, .c-hamburger--htx.is-active span::before {
+    transition-delay: 0s,.25s;
+}
+.c-hamburger--htx.is-active span::after {
+    bottom: 0;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+
 /*Below line of code is just to make compatible mobile
 but i didn't really follow the responsive methodoly as there is 
 no requirement mentioned*/
@@ -292,6 +420,7 @@ no requirement mentioned*/
     }  
 } 
 @media (min-width: 600px) and (max-width: 959px) {
+
     .filter  {
         max-width: 30% !important;
     }
@@ -303,3 +432,28 @@ no requirement mentioned*/
         max-width: 100% !important;
     }  
 }
+
+@media (max-width: 959px) {
+    .menu {
+        display: inline-block;
+    }
+    
+    .filter  {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0px;
+        height: 100%;
+        width: 200px;
+    }
+
+    .filter-container {
+        height: 100%;
+        width: 200px !important;
+    }
+
+    .filter.hide {
+        left: -200px;
+    }
+}
+
