@@ -87,7 +87,7 @@ class Browse extends Component {
     
     return (  
       <div className="layout-row">
-        <div className={`flex-20 filter layout-row ${active ? "" : "hide"}`}>
+        <div className={`filter layout-row ${active ? "" : "hide flex-20"}`}>
           <Filter onFilter={filters => this.onFilter(filters)}/>
         </div>
         <div className="page-wrapper flex">

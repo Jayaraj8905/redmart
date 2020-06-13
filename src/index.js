@@ -16,7 +16,7 @@ ReactDOM.render(
 	<Provider store={createStoreWithMiddleware(reducers)}>
 		<BrowserRouter>
 			<div className="layout-column flex">
-				<Header />
+				<Header/>
 	        	<Switch>
 	        		<Route path="/cart" component={Cart} />
 	        		<Route path="/detail/:id" component={Detail} />

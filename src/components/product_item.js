@@ -26,7 +26,7 @@ class ProductItem extends Component {
 	    return (
 	    	<div onClick={() => onSelect(product)} className="product-item layout-align-start-center flex layout-column">
 	    		<img src={image} />
-	    		<p>{product.name}</p>
+	    		<center>{product.name}</center>
 	    		<p>{product.measurement}</p>
 	    		<p className="bold">${product.price}</p>
 	      		{addToCart}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, BrowserRouter } from "react-router-dom";
 import { toggleFilter } from "./../actions";
 import { connect } from "react-redux";
 
@@ -19,16 +19,15 @@ class Header extends Component {
   render() {
     const { filterState } = this.props;
     const active = filterState.state;
-    
     return (
       <header>
         <div className="layout-row layout-align-space-between-center">
           <div className={`menu ${active ? "open" : ""}`}>
             <button className={`c-hamburger c-hamburger--htx ${active ? "is-active" : ""}`} onClick={() => this.toggle()}><span>toggle menu</span></button>
           </div>
-          <div className="layout-row layout-align-end-center">
-            <NavLink to="/browse" className="btn btn-primary" activeClassName="active">Browse</NavLink>
-            <NavLink to="/cart" className="btn btn-primary" activeClassName="active">Cart</NavLink>
+          <div className="layout-row layout-align-end-center flex">
+              <NavLink to="/browse" className="btn btn-primary">Browse</NavLink>
+              <NavLink to="/cart" className="btn btn-primary">Cart</NavLink>
           </div>
         </div>
       </header>
@@ -37,8 +36,8 @@ class Header extends Component {
 }
 
 
-function mapStateToProps({ filterState }) {
-  return { filterState };
+function mapStateToProps({ products, cart, filterState }) {
+  return { products, cart, filterState };
 }
 
 export default connect(mapStateToProps, { toggleFilter })(Header);

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchCart, removeCart } from "../actions";
+import { toggleFilter } from "../actions";
 
 import ProductItem from "./../components/product_item";
 
@@ -49,5 +50,5 @@ function mapStateToProps({ cart, products }) {
   return { cart: cartProducts };
 }
 
-export default connect(mapStateToProps, { fetchCart, removeCart })(Cart);
+export default connect(mapStateToProps, { fetchCart, removeCart, toggleFilter })(Cart);
 
